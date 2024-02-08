@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const cors = require("cors");
+const cors = require("cors"); // Importing cors module
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
-
 const app = express();
-app.use(cors());
+app.use(cors()); // Adding cors middleware to allow cross-origin requests
 app.use(express.json());
 app.use("/", router);
-app.listen(5000, () => console.log("Server Running"));
-console.log(process.env.EMAIL_USER);
+
+const port = process.env.PORT || 5000; // Using the port specified in environment variable or default to 5000
+app.listen(port, () => console.log(`Server Running on port ${port}`));
 
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
@@ -29,7 +29,7 @@ contactEmail.verify((error) => {
 });
 
 router.post("/contact", (req, res) => {
-  const name = req.body.firstName + req.body.lastName;
+  const name = req.body.firstName +" "+ req.body.lastName;
   const email = req.body.email;
   const message = req.body.message;
   const phone = req.body.phone;
@@ -44,9 +44,9 @@ router.post("/contact", (req, res) => {
   };
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      res.json(error);
+      res.json({ code: 500, status: "Message not Sent", error }); // Sending error response
     } else {
-      res.json({ code: 200, status: "Message Sent" });
+      res.json({ code: 200, status: "Message Sent" }); // Sending success response
     }
   });
 });
