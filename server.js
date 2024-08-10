@@ -5,11 +5,15 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors()); 
 app.use(express.json());
 app.use("/", router);
 
+<<<<<<< HEAD
 const port = 5000; 
+=======
+const port = 5000;
+>>>>>>> aa374a7c5a445a013e1aa00f42cd780ac92e12f3
 app.listen(port, () => console.log(`Server Running on port ${port}`));
 
 const contactEmail = nodemailer.createTransport({
