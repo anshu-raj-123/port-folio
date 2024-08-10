@@ -7,6 +7,7 @@ import newsSite from "../assets/img/newsImg.png";
 import ticToe from "../assets/img/tictoeImg.png";
 import weather from "../assets/img/weather screenshot.png";
 import invoicer from "../assets/img/Invoicer.png";
+import AIgenerated from "../assets/img/AIgenerated.png";
 import TrackVisibility from "react-on-screen";
 import "animate.css";
 
@@ -23,6 +24,12 @@ export const Projects = () => {
       description: "E-commerce site using HTML, CSS, and ReactJs",
       imgUrl: ecommerce,
       link: "https://e-commerce-project123.netlify.app/",
+    },
+    {
+      title: "AI-Driven Character Dialogue Generator",
+      description: " A React-based tool that generates and customizes character dialogues using AI, with text-to-speech functionality for immersive interaction.",
+      imgUrl: AIgenerated,
+      link: "https://anshu-raj-123.github.io/TextToSpeech/",
     },
     {
       title: "News Website",
